@@ -19,6 +19,12 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
 
+    // Temporary allow difficulty to be minimum will shift to proof of stake hybrid soon
+    if ((pindexLast->nHeight + 1 > 33207) && (pindexLast->nHeight < 40000)) {
+        return nProofOfWorkLimit;
+    }
+
+
     // Only change once per difficulty adjustment interval
     if ((pindexLast->nHeight+1) % params.DifficultyAdjustmentInterval() != 0)
     {

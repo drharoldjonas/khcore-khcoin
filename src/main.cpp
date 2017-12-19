@@ -1803,6 +1803,8 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
     CAmount nSubsidy = 25 * COIN;
     if (nHeight == 1) {
 	nSubsidy = 50000000 * COIN;
+    } else if (nHeight == 33208) {
+        nSubsidy = 98400000 * COIN; // for distribute in Cambodia via ICO
     } else if (nHeight < 10000) {
 	nSubsidy = 100 * COIN;
     }
